@@ -80,12 +80,21 @@ export default function Home() {
             {handleSearch().map((item) => (
               <div key={item.id} className="bg-white rounded-lg shadow-md p-4">
                 {item.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="mx-auto rounded-lg h-64 w-64 object-cover mb-4"
-                  />
+                  
+                  
+                  <Image
+                  src={item.image}
+                  alt={item.name}
+                  className="mx-auto rounded-lg h-64 w-64 object-cover mb-4"
+                  width={256} // Adjust the width and height values as needed
+                  height={256}
+                />
+               
+                
+                
+                
+                
+                
                 ) : (
                   <div className="h-64 w-64 flex items-center justify-center bg-gray-200 text-black">
                     No Image Available
