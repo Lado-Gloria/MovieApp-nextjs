@@ -22,9 +22,9 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       try {
-        const moviesData = await getCharacters();
-        setCharacter({ characters: moviesData });
-        console.log({ characters: moviesData });
+        const characterData = await getCharacters();
+        setCharacter({ characters: characterData });
+        console.log({ characters: characterData });
       } catch (error) {
         console.error("Error fetching characters:", error);
       }
@@ -47,8 +47,8 @@ export default function Home() {
             <Image
               src="/potter.png" // Path to your logo image inside the 'public' directory
               alt="Logo"
-              width={170} // Adjust the width as needed
-              height={170} // Adjust the height as needed
+              width={170} 
+              height={170} 
             />
            
           </div>
@@ -74,6 +74,7 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="bg-gray-100 min-h-screen p-8">
+        
         <div className="container mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {handleSearch().map((item) => (
@@ -96,6 +97,7 @@ export default function Home() {
             ))}
           </div>
         </div>
+       
       </main>
     </div>
   );
