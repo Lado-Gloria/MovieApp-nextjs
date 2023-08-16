@@ -43,7 +43,7 @@ export default function Home() {
     return filteredCharacters;
   };
 
-  const displayedCharacters = handleSearch().slice(0, 28); // Display only the first 24 characters
+  const displayedCharacters = handleSearch().slice(0, 28); 
 
   return (
     <div>

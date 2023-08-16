@@ -1,7 +1,10 @@
+// Import the required Tailwind CSS classes
 'use client'
+import "tailwindcss/tailwind.css";
 import React, { useEffect, useState } from "react";
 import { getCharacters } from "@/app/utilities/utilis";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Character {
   id: number;
@@ -22,9 +25,9 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       try {
-        const moviesData = await getCharacters();
-        setCharacter({ characters: moviesData });
-        console.log({ characters: moviesData });
+        const characterData = await getCharacters();
+        setCharacter({ characters: characterData });
+        console.log({ characters: characterData });
       } catch (error) {
         console.error("Error fetching characters:", error);
       }
@@ -32,10 +35,12 @@ export default function Home() {
   }, []);
 
   const handleSearch = () => {
-    const filteredCharacters = character?.characters?.filter((character) =>
-      character.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    return filteredCharacters || [];
+    if (character) {
+      return character.characters.filter((char) =>
+        char.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+    return [];
   };
 
   return (
@@ -70,13 +75,11 @@ export default function Home() {
         </div>
       </nav>
 
-  
-
       {/* Main Content */}
       <main className="bg-gray-100 min-h-screen p-8">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {handleSearch().map((item) => (
+            {character && handleSearch().map((item) => (
               <div key={item.id} className="bg-white rounded-lg shadow-md p-4">
                 {item.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -91,7 +94,7 @@ export default function Home() {
                   </div>
                 )}
                 <p className="text-lg font-semibold text-center">{item.name}</p>
-                <p className="text-lg text-center">Date Of Birth{item.dateOfBirth}</p>
+                <p className="text-lg text-center">Date Of Birth {item.dateOfBirth}</p>
               </div>
             ))}
           </div>
