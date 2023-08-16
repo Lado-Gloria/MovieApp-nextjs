@@ -1,11 +1,7 @@
-import { MOVIE_API_KEY } from "@/app/config";
+// import { MOVIE_API_KEY } from "@/app/config";
 export async function GET() {
  
-    if (!MOVIE_API_KEY) {
-        return new Response("MOVIE API token not found", {
-            status: 400,
-        });
-    }
+  
     try {
         const request = await fetch('https://hp-api.onrender.com/api/characters', {
             method: 'GET',
