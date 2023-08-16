@@ -2,7 +2,7 @@ import { MOVIE_API_KEY } from "@/app/config";
 export async function GET() {
  
     if (!MOVIE_API_KEY) {
-        return new Response("CHARACTER API token not found", {
+        return new Response("MOVIE API token not found", {
             status: 400,
         });
     }
