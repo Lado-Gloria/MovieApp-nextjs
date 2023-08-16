@@ -1,4 +1,3 @@
-
 'use client'
 import React, { useEffect, useState } from "react";
 import { getCharacters } from "./utilities/utilis";
@@ -34,10 +33,12 @@ export default function Home() {
   }, []);
 
   const handleSearch = () => {
-    const filteredCharacters = character?.characters?.filter((character) =>
-      character.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    return filteredCharacters || [];
+    const filteredCharacters =
+      character?.characters?.filter(
+        (character) =>
+          character.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ) || [];
+    return filteredCharacters;
   };
 
   return (
@@ -74,11 +75,7 @@ export default function Home() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {handleSearch().map((item, index) => (
-                <Link
-                  key={item.id}
-                  href={`${item.id}`}
-                 
-                >
+                <Link key={item.id} href={`${item.id}`}>
                   <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow">
                     <div className="h-64 w-64 mx-auto rounded-lg overflow-hidden">
                       {item.image ? (
