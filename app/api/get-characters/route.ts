@@ -1,10 +1,6 @@
-import { MOVIE_API_KEY, MOVIE_BASE_URL } from "@/app/config";
+import { MOVIE_API_KEY } from "@/app/config";
 export async function GET() {
-    if (!MOVIE_BASE_URL) {
-        return new Response("Movie base URL not found", {
-            status: 404,
-        });
-    }
+ 
     if (!MOVIE_API_KEY) {
         return new Response("CHARACTER API token not found", {
             status: 400,
@@ -14,12 +10,7 @@ export async function GET() {
         const request = await fetch('https://hp-api.onrender.com/api/characters', {
             method: 'GET',
             headers: {
-
-
-
-
-                
-                "Content-Type": "application/json",
+              "Content-Type": "application/json",
                 
             },
         });
