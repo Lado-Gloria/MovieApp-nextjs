@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+
 'use client'
 import React, { useEffect, useState } from "react";
 import { getCharacters } from "./utilities/utilis";
@@ -90,7 +90,12 @@ export default function Home() {
                         />
                       ) : (
                         <div className="h-full w-full flex items-center justify-center rounded-lg text-black">
-                          <img src="harry.jpeg" alt="" />
+                          <Image
+                            src="/harry.jpeg"
+                            alt="Default Image"
+                            width={256}
+                            height={256}
+                          />
                         </div>
                       )}
                     </div>
