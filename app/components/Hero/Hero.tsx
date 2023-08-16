@@ -9,9 +9,9 @@ const Hero = () => {
                 <img
                     src="hogwarts.jpg"
                     layout="fill"
-                    objectit="cover"
+                    objectfit="cover"
                     width={1900}
-                    priority
+                    priority=""
                     alt="Hero Section Background Image"
                 />
             </div>
