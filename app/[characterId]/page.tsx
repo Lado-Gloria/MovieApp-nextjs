@@ -1,9 +1,13 @@
-"use client"
+// @jsxRuntime classic
+// @jsxFrag React.Fragment
+// @ts-nocheck
+"use client";
+
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Navigation from "../components/navigation";
-import { FaLessThan } from "react-icons/fa";
+import { FaLessThan } from "react-icons/fa"; // Import the less than icon
 
 type params = {
   params: {
@@ -12,9 +16,8 @@ type params = {
 };
 
 export default function CharacterDetail({ params: { characterId } }: params) {
-  const [character, setCharacter] = useState<any[]>([]);
+  const [character, setCharacter] = useState([]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function getCharacterDetails() {
     const res = await axios.get(
       `https://hp-api.onrender.com/api/character/${characterId}`
@@ -25,10 +28,10 @@ export default function CharacterDetail({ params: { characterId } }: params) {
   useEffect(() => {
     async function fetchCharacterDetail() {
       const data = await getCharacterDetails();
-      setCharacter([data]); // Wrap data in an array since it's a single character
+      setCharacter(data);
     }
     fetchCharacterDetail();
-  }, [characterId, getCharacterDetails]);
+  }, );
 
   return (
     <>
@@ -39,7 +42,7 @@ export default function CharacterDetail({ params: { characterId } }: params) {
         <Link href="/" className="block text-blue-500 mb-4 flex items-center">
           <FaLessThan className="h-5 w-5 inline-block align-middle mr-1 -mt-1" />  Back
         </Link>
-        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+        <div className="bg-white p-6 rounded-lg shadow-md">
           {character.map((char, index) => (
             <div key={index} className="text-black mb-6">
               <div className="font-semibold mb-2">Name: {char.name}</div>
