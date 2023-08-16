@@ -36,9 +36,8 @@ export default function Home() {
 
   const handleSearch = () => {
     const filteredCharacters =
-      character?.characters?.filter(
-        (character) =>
-          character.name.toLowerCase().includes(searchQuery.toLowerCase())
+      character?.characters?.filter((char: Character) =>
+        char.name.toLowerCase().includes(searchQuery.toLowerCase())
       ) || [];
     return filteredCharacters;
   };
