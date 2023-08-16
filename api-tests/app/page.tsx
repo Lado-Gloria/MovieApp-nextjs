@@ -45,10 +45,10 @@ export default function Home() {
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center">
             <Image
-              src="/potter.png" // Path to your logo image inside the 'public' directory
+              src="/potter.png" 
               alt="Logo"
-              width={170} // Adjust the width as needed
-              height={170} // Adjust the height as needed
+              width={170} 
+              height={170} 
             />
            
           </div>

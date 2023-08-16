@@ -25,12 +25,6 @@ const Navigation: React.FC = () => {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
-                        <button
-                            className="bg-blue-500 text-black px-4 py-2 rounded-lg"
-                            onClick={handleSearch}
-                        >
-                            Search
-                        </button>
                     </div>
                 </div>
             </nav>

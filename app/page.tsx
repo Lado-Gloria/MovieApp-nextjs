@@ -1,15 +1,17 @@
-'use client'
+
+"use client";
+import "tailwindcss/tailwind.css";
 import React, { useEffect, useState } from "react";
 import { getCharacters } from "./utilities/utilis";
 import Image from "next/image";
 import Link from "next/link";
+import Hero from "./components/Hero/Hero";
 
 interface Character {
   id: number;
   image: string;
   name: string;
   dateOfBirth: number[];
-  genre_id: number[];
 }
 
 type CharacterData = {
@@ -41,6 +43,8 @@ export default function Home() {
     return filteredCharacters;
   };
 
+  const displayedCharacters = handleSearch().slice(0, 28); // Display only the first 24 characters
+
   return (
     <div>
       {/* Navigation Bar */}
@@ -57,27 +61,29 @@ export default function Home() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button
-              className="bg-blue-500 text-black px-4 py-2 rounded-lg"
-              onClick={handleSearch}
-            >
-              Search
-            </button>
           </div>
         </div>
       </nav>
-
+      {searchQuery === "" && <Hero />}
       {/* Main Content */}
       <main className="bg-gray-100 min-h-screen p-8">
+        <div className="mt-16 mb-8 text-center">
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">
+            Meet the Unforgettable Characters
+          </h1>
+          <p className="text-4xl font-bold text-gray-800 mb-2">
+            of Hogwarts School of Witchcraft and Wizardry
+          </p>
+        </div>
         <div className="container mx-auto">
-          {handleSearch().length === 0 ? (
+          {displayedCharacters.length === 0 ? (
             <p className="text-lg text-center mt-8">No results found.</p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {handleSearch().map((item, index) => (
+              {displayedCharacters.map((item, index) => (
                 <Link key={item.id} href={`${item.id}`}>
-                  <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow">
-                    <div className="h-64 w-64 mx-auto rounded-lg overflow-hidden">
+                  <div className="bg-blue rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow">
+                    <div className="h-64 w-64 mx-auto mb-4 rounded-lg overflow-hidden transform hover:scale-105 transition-transform">
                       {item.image ? (
                         <Image
                           src={item.image}
@@ -88,7 +94,7 @@ export default function Home() {
                       ) : (
                         <div className="h-full w-full flex items-center justify-center rounded-lg text-black">
                           <Image
-                            src="/harry.jpeg"
+                            src="/man.jpg"
                             alt="Default Image"
                             width={256}
                             height={256}

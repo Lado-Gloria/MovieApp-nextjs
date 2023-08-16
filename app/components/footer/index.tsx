@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                     <div className="text-center md:text-left mb-4 md:mb-0">
                         <h3 className="text-lg font-bold">Download Our App</h3>
-                        <h1 className="text-4xl font-bold mb-2">P<span className="text-blue-500">OO</span>TER</h1>
+                        <h1 className="text-4xl font-bold mb-2">PO<span className="text-blue-500">TT</span>ER</h1>
                     </div>
                     
                     <div className="text-center md:text-left">
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
                 
                 <hr className="my-6 border-gray-600" />
                 
-                <p className="text-center">&copy; 2023 P<span className="font-bold">OO</span>TER. All Rights Reserved.</p>
+                <p className="text-center">&copy; 2023 P<span className="font-bold">O</span>TTER. All Rights Reserved.</p>
             </div>
         </footer>
     );
