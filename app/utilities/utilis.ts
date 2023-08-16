@@ -1,6 +1,6 @@
 export const getCharacters =async() =>{
    try{
-   const response = await fetch (`/api/get-movies`,{
+   const response = await fetch (`/api/get-characters`,{
        method:'GET',
    })
    const result = await response.json();

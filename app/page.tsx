@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import React, { useEffect, useState } from "react";
 import { getCharacters } from "./utilities/utilis";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Character {
   id: number;
@@ -44,13 +46,7 @@ export default function Home() {
       <nav className="bg-gray-800 p-4 text-black">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center">
-            <Image
-              src="/potter.png" // Path to your logo image inside the 'public' directory
-              alt="Logo"
-              width={170} 
-              height={170} 
-            />
-           
+            <Image src="/potter.png" alt="Logo" width={170} height={170} />
           </div>
           <div>
             <input
@@ -70,43 +66,46 @@ export default function Home() {
         </div>
       </nav>
 
-  
-
       {/* Main Content */}
       <main className="bg-gray-100 min-h-screen p-8">
-        
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {handleSearch().map((item) => (
-              <div key={item.id} className="bg-white rounded-lg shadow-md p-4">
-                {item.image ? (
-                  
-                  
-                  <Image
-                  src={item.image}
-                  alt={item.name}
-                  className="mx-auto rounded-lg h-64 w-64 object-cover mb-4"
-                  width={256} // Adjust the width and height values as needed
-                  height={256}
-                />
-               
-                
-                
-                
-                
-                
-                ) : (
-                  <div className="h-64 w-64 flex items-center justify-center bg-gray-200 text-black">
-                    No Image Available
+          {handleSearch().length === 0 ? (
+            <p className="text-lg text-center mt-8">No results found.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {handleSearch().map((item, index) => (
+                <Link
+                  key={item.id}
+                  href={`/app/${item.id}`}
+                 
+                >
+                  <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow">
+                    <div className="h-64 w-64 mx-auto rounded-lg overflow-hidden">
+                      {item.image ? (
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          width={256}
+                          height={256}
+                        />
+                      ) : (
+                        <div className="h-full w-full flex items-center justify-center rounded-lg text-black">
+                          <img src="harry.jpeg" alt="" />
+                        </div>
+                      )}
+                    </div>
+                    <p className="text-lg font-semibold text-center mt-4">
+                      {item.name}
+                    </p>
+                    <p className="text-lg text-center">
+                      Date Of Birth {item.dateOfBirth}
+                    </p>
                   </div>
-                )}
-                <p className="text-lg font-semibold text-center">{item.name}</p>
-                <p className="text-lg text-center">Date Of Birth {item.dateOfBirth}</p>
-              </div>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
-       
       </main>
     </div>
   );
