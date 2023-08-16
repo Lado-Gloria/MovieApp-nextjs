@@ -6,7 +6,7 @@ export async function GET() {
         });
     }
     if (!MOVIE_API_KEY) {
-        return new Response("Movie API token not found", {
+        return new Response("CHARACTER API token not found", {
             status: 400,
         });
     }

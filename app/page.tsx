@@ -76,7 +76,7 @@ export default function Home() {
               {handleSearch().map((item, index) => (
                 <Link
                   key={item.id}
-                  href={`/app/${item.id}`}
+                  href={`${item.id}`}
                  
                 >
                   <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow">
