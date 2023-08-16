@@ -4,14 +4,12 @@ import Image from "next/image";
 const Hero = () => {
     return (
         <div className="relative h-[calc(100vh-5rem)]">
-
             <div className="absolute inset-0">
-                <img
-                    src="hogwarts.jpg"
+                <Image
+                    src="/hogwarts.jpg" // Make sure to provide the correct path to the image
                     layout="fill"
-                    objectfit="cover"
-                    width={1900}
-                    priority=""
+                    objectFit="cover"
+                    priority={true}
                     alt="Hero Section Background Image"
                 />
             </div>
