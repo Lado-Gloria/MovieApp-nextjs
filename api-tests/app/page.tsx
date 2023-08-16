@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import {get}
+import { getCharacters } from "@/app/utilities/utilis";
 import Image from "next/image";
 
 interface Character {
