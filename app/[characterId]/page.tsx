@@ -1,13 +1,9 @@
-// @jsxRuntime classic
-// @jsxFrag React.Fragment
-// @ts-nocheck
-"use client";
-
+"use client"
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Navigation from "../components/navigation";
-import { FaLessThan } from "react-icons/fa"; 
+import { FaLessThan } from "react-icons/fa";
 
 type params = {
   params: {
@@ -16,8 +12,9 @@ type params = {
 };
 
 export default function CharacterDetail({ params: { characterId } }: params) {
-  const [character, setCharacter] = useState([]);
+  const [character, setCharacter] = useState<any[]>([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function getCharacterDetails() {
     const res = await axios.get(
       `https://hp-api.onrender.com/api/character/${characterId}`
@@ -28,10 +25,10 @@ export default function CharacterDetail({ params: { characterId } }: params) {
   useEffect(() => {
     async function fetchCharacterDetail() {
       const data = await getCharacterDetails();
-      setCharacter(data);
+      setCharacter([data]); // Wrap data in an array since it's a single character
     }
     fetchCharacterDetail();
-  }, []);
+  }, [characterId, getCharacterDetails]);
 
   return (
     <>
