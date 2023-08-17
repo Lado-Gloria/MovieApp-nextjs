@@ -1,4 +1,4 @@
-// import { MOVIE_API_KEY } from "@/app/config";
+
 export async function GET() {
  
   

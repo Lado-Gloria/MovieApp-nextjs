@@ -6,7 +6,7 @@ const Hero = () => {
         <div className="relative h-[calc(100vh-5rem)]">
             <div className="absolute inset-0">
                 <Image
-                    src="/hogwarts.jpg" // Make sure to provide the correct path to the image
+                    src="/hogwarts.jpg" 
                     layout="fill"
                     objectFit="cover"
                     priority={true}

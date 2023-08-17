@@ -1,4 +1,4 @@
-// Import the required Tailwind CSS classes
+
 'use client'
 import "tailwindcss/tailwind.css";
 import React, { useEffect, useState } from "react";
