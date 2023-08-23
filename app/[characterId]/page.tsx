@@ -7,7 +7,7 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Navigation from "../components/navigation";
-import { FaLessThan } from "react-icons/fa"; // Import the less than icon
+import { FaLessThan } from "react-icons/fa"; 
 
 type params = {
   params: {
